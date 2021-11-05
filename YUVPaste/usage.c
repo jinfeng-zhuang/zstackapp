@@ -1,0 +1,15 @@
+const char* usage =
+"Usage: YUVPaste [OPTION]... [FILE]...\n"
+"\n"
+"OPTIONS:\n"
+"\n"
+"  --version     version info\n"
+"  --help        this message\n"
+"  --log         log config\n"
+"\n"
+"Examples:\n"
+"\n"
+"  YUVPaste --format=YU12 --resolution=1920x1080 --rect=\"0,0,100,100\" --count = 100 test.yuv copy.yuv\n"
+"\n"
+"Source located at https://github.com/jinfeng-zhuang/zstack\n"
+"Copyright @ 2021, Jinfeng Zhuang\n";
