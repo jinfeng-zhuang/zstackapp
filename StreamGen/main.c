@@ -7,10 +7,9 @@
 //#include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
 
-//struct application app;
+// struct application app;
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 #if 0
     const AVCodec* codec;
     AVCodecContext* c = NULL;
@@ -23,5 +22,5 @@ int main(int argc, char *argv[])
     log_init(app.param.log_config);
 #endif
 
-    return 0;
+  return 0;
 }

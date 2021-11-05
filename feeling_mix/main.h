@@ -3,13 +3,13 @@
 
 #include <stdio.h>
 
-#define LOG_CONFIG_LENGTH   (256)
+#define LOG_CONFIG_LENGTH (256)
 
 struct application {
-    struct {
-        char log_config[LOG_CONFIG_LENGTH];
-        char filename[FILENAME_MAX];
-    } param;
+  struct {
+    char log_config[LOG_CONFIG_LENGTH];
+    char filename[FILENAME_MAX];
+  } param;
 };
 
 #endif

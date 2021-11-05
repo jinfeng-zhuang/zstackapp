@@ -1,5 +1,4 @@
-const char *usage =
-"\
+const char *usage = "\
 Usage: pman [OPTION]... [FILE]...\n\
 \n\
 [DESCRIPTION]\n\

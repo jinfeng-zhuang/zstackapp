@@ -8,24 +8,24 @@ extern "C" {
 #include <stdio.h>
 #include <zstack/types.h>
 
-#define LOG_CONFIG_LENGTH   (256)
+#define LOG_CONFIG_LENGTH (256)
 
 struct application {
-    struct {
-        char log_config[LOG_CONFIG_LENGTH];
-        char input_filename[FILENAME_MAX];
-        char output_filename[FILENAME_MAX];
-        u8 ascii_flag;
-        u8 addr_flag;
-        u8 clipboard_flag;
-        u32 page_size;
-    } param;
+  struct {
+    char log_config[LOG_CONFIG_LENGTH];
+    char input_filename[FILENAME_MAX];
+    char output_filename[FILENAME_MAX];
+    u8 ascii_flag;
+    u8 addr_flag;
+    u8 clipboard_flag;
+    u32 page_size;
+  } param;
 
-    u8* input_file_content;
-    u64 input_file_size;
+  u8 *input_file_content;
+  u64 input_file_size;
 
-    u8* output_file_content;
-    u64   output_file_size;
+  u8 *output_file_content;
+  u64 output_file_size;
 };
 
 #ifdef __cplusplus

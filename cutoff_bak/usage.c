@@ -1,5 +1,4 @@
-const char *usage =
-"\
+const char *usage = "\
 Usage: template [OPTION]... [FILE]...\n\
 \n\
 [DESCRIPTION]\n\

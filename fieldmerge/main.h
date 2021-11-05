@@ -7,34 +7,34 @@ extern "C" {
 
 #include <stdio.h>
 
-#define LOG_CONFIG_LENGTH   (256)
+#define LOG_CONFIG_LENGTH (256)
 
 struct application {
-    struct {
-        char log_config[LOG_CONFIG_LENGTH];
-        char input_filename[FILENAME_MAX];
-        char output_filename[FILENAME_MAX];
+  struct {
+    char log_config[LOG_CONFIG_LENGTH];
+    char input_filename[FILENAME_MAX];
+    char output_filename[FILENAME_MAX];
 
-        int width;
-        int height;
-        int top_field_first;
+    int width;
+    int height;
+    int top_field_first;
 
-        char top_filename[FILENAME_MAX];
-        char bottom_filename[FILENAME_MAX];
+    char top_filename[FILENAME_MAX];
+    char bottom_filename[FILENAME_MAX];
 
-        int top_index;
-        int bottom_index;
+    int top_index;
+    int bottom_index;
 
-        int flag_window;
-    } param;
+    int flag_window;
+  } param;
 
-    unsigned char *output_file_content;
-    unsigned int   output_file_size;
+  unsigned char *output_file_content;
+  unsigned int output_file_size;
 
-    unsigned char *top_file_content;
-    unsigned int top_file_size;
-    unsigned char *bottom_file_content;
-    unsigned int bottom_file_size;
+  unsigned char *top_file_content;
+  unsigned int top_file_size;
+  unsigned char *bottom_file_content;
+  unsigned int bottom_file_size;
 };
 
 #ifdef __cplusplus

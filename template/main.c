@@ -4,14 +4,13 @@
 
 struct application app;
 
-int main(int argc, char *argv[])
-{
-    if (param_parser(argc, argv, &app) == -1) {
-        print_usage();
-        return -1;
-    }
+int main(int argc, char *argv[]) {
+  if (param_parser(argc, argv, &app) == -1) {
+    print_usage();
+    return -1;
+  }
 
-    log_init(app.param.log_config);
+  log_init(app.param.log_config);
 
-    return 0;
+  return 0;
 }

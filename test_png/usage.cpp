@@ -1,5 +1,4 @@
-const char *usage =
-"\
+const char *usage = "\
 Usage: template [OPTION]... [FILE]...\n\
 \n\
 This is a template project to generate a new one.\n\

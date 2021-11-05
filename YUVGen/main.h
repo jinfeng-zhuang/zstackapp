@@ -8,27 +8,27 @@ extern "C" {
 #include <stdio.h>
 #include <zstack/types.h>
 
-#define LOG_CONFIG_LENGTH   (256)
+#define LOG_CONFIG_LENGTH (256)
 
 struct application {
-    struct {
-        char log_config[LOG_CONFIG_LENGTH];
-        char input_filename[FILENAME_MAX];
-        char output_filename[FILENAME_MAX];
-        u32 width;
-        u32 height;
-        u16 stride;
-        enum YUVFormat format;
-        u8 framerate;
-        u8 field;
-        u32 duration; // second
-    } param;
+  struct {
+    char log_config[LOG_CONFIG_LENGTH];
+    char input_filename[FILENAME_MAX];
+    char output_filename[FILENAME_MAX];
+    u32 width;
+    u32 height;
+    u16 stride;
+    enum YUVFormat format;
+    u8 framerate;
+    u8 field;
+    u32 duration; // second
+  } param;
 
-    u8 *input_file_content;
-    u64 input_file_size;
+  u8 *input_file_content;
+  u64 input_file_size;
 
-    u8 *output_file_content;
-    u64   output_file_size;
+  u8 *output_file_content;
+  u64 output_file_size;
 };
 
 #ifdef __cplusplus
