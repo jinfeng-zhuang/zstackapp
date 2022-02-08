@@ -1,9 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include <3rdparty/getopt.h>
-#include <zstack.h>
-
 #include "main.h"
+#include <getopt/getopt.h>
+#include <stdlib.h>
+#include <string.h>
+#include <zstack/zstack.h>
 
 enum {
   OPTION_VERSION = 1,
@@ -18,21 +19,18 @@ static struct option opts[] = {{"version", no_argument, 0, OPTION_VERSION},
 
 int param_parser(int argc, char *argv[], struct application *app) {
   int c;
-
-  if (argc <= 1)
-    return -1;
+  struct time tm;
 
   while ((c = getopt_long(argc, argv, "", opts, NULL)) != -1) {
     switch (c) {
     case OPTION_VERSION:
-      log_info("Version: %s\n", version);
-      break;
+      warn("Version: %s\n", version);
+      return -1;
     case OPTION_HELP:
-      log_info(usage);
-      break;
+      return -1;
     case OPTION_LOG:
       if (strlen(optarg) >= LOG_CONFIG_LENGTH) {
-        log_info("log config out of range (0, %d)\n", LOG_CONFIG_LENGTH);
+        warn("log config out of range (0, %d)\n", LOG_CONFIG_LENGTH);
         return -1;
       }
       strncpy(app->param.log_config, optarg, LOG_CONFIG_LENGTH);
@@ -45,10 +43,19 @@ int param_parser(int argc, char *argv[], struct application *app) {
   if (optind < argc) {
     if (strlen(argv[optind]) >= FILENAME_MAX)
       return -1;
-    memcpy(app->param.filename, argv[optind], strlen(argv[optind]));
+    memcpy(app->param.input_filename, argv[optind], strlen(argv[optind]));
   }
 
-  // Do param validation
+  /*************************************************************************
+   * Do param validation
+   ************************************************************************/
+
+  if (0 == app->param.output_filename[0]) {
+    get_time(&tm);
+    snprintf(app->param.output_filename, FILENAME_MAX,
+             "%d-%02d-%02d_%02d-%02d-%02d", tm.year, tm.month, tm.day, tm.hour,
+             tm.min, tm.sec);
+  }
 
   return 0;
 }

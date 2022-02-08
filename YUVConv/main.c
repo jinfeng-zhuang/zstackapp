@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 
   size_t bytesread;
   int i, j;
-  u16 u, v;
+  u16 y, u, v;
 
   if (param_parser(argc, argv, &app) == -1) {
     print_usage();
@@ -59,15 +59,22 @@ int main(int argc, char *argv[]) {
       }
     } else {
       // copy Y
-      memcpy(app.oframe, app.iframe, app.param.width * app.param.height);
-
-      // copy u/v
       for (j = 0; j < app.param.height; j++) {
         for (i = 0; i < app.param.width; i++) {
-          u = iwrap->GetU(app.iframe, app.param.width, app.param.height, i, j);
-          v = iwrap->GetV(app.iframe, app.param.width, app.param.height, i, j);
-          owrap->SetU(app.oframe, app.param.width, app.param.height, i, j, u);
-          owrap->SetV(app.oframe, app.param.width, app.param.height, i, j, v);
+          y = iwrap->GetY(app.iframe, app.param.width, app.param.height, i, j);
+          owrap->SetY(app.oframe, app.param.width, app.param.height, i, j, y);
+        }
+      }
+
+      if (Y != app.param.oformat) {
+        // copy u/v
+        for (j = 0; j < app.param.height; j++) {
+          for (i = 0; i < app.param.width; i++) {
+            u = iwrap->GetU(app.iframe, app.param.width, app.param.height, i, j);
+            v = iwrap->GetV(app.iframe, app.param.width, app.param.height, i, j);
+            owrap->SetU(app.oframe, app.param.width, app.param.height, i, j, u);
+            owrap->SetV(app.oframe, app.param.width, app.param.height, i, j, v);
+          }
         }
       }
 
